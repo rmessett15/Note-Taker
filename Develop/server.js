@@ -68,6 +68,16 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
+app.delete('/api/notes/:id', (req, res) => {
+  const deleteNote = req.params.deleteNote || req.query.deleteNote;
+  actions.remove(req.params.id, deleteNote, handleResults(res));
+});
+
+app.listen(PORT, () =>
+  console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
+
+
 
 
 
@@ -114,11 +124,6 @@ app.post('/api/reviews', (req, res) => {
     res.status(500).json('Error in posting review');
   }
 });
-
-app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT} 🚀`)
-);
-
 
   // in server.js
   // create post route (post/api/notes)
