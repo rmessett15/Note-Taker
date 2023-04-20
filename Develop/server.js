@@ -29,6 +29,8 @@ app.get('/api/notes', function (req, res) {
   });
 });
 
+
+// Change variable names
 const readAndAppend = (content, file) => {
   fs.readFile(file, "utf8", (err, data) => {
     if (err) {
@@ -41,6 +43,7 @@ const readAndAppend = (content, file) => {
   });
 };
 
+// Change variable names
 const writeToFile = (destination, content) =>
   fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
     err ? console.error(err) : console.info(`\nData written to ${destination}`)
@@ -68,10 +71,47 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
+
+
+
+const readJson = (content, file) => {
+  fs.readFile(file, "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      const parsedData = JSON.parse(data);
+      parsedData.push(content);
+    }
+  });
+};
+
 app.delete('/api/notes/:id', (req, res) => {
-  const deleteNote = req.params.deleteNote || req.query.deleteNote;
-  actions.remove(req.params.id, deleteNote, handleResults(res));
+  res.send(`Deleted note with ${req.params.id}`);
+  readJson(content, 'db/db.json');
 });
+
+// const jsonData = JSON.parse(data);
+
+app.param('id', (req, res, next, id) => {
+  console.log(id)
+  req.jsonData = jsonData[id];
+  next()
+})
+
+// app.delete('/api/notes/:id', (req, res) => {
+//   const deleteNote = req.params.deleteNote || req.query.deleteNote;
+//   actions.remove(req.params.id, deleteNote, handleResults(res));
+// });
+
+// app.delete('/api/notes/:id', async (req, res, next) => {
+//   try {
+//     req.log.debug(req.params);
+//     req.log.debug(req.headers);
+//   } catch (e) {
+//     req.log.error(e);
+//     next(e);
+//   }
+// });
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
