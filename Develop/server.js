@@ -1,8 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const uniqid = require('uniqid');
 // Helper method for generating unique ids
+const uniqid = require('uniqid');
 
 const PORT = 3001;
 
@@ -125,9 +125,17 @@ app.post('/api/reviews', (req, res) => {
   }
 });
 
-  // in server.js
-  // create post route (post/api/notes)
-  // add to the array json
-  // stringify array
-  // write file to db.json
+  // In server.js
+  // Create post route (post/api/notes)
+  // Add to the array json
+  // Stringify array
+  // Write file to db.json
   // Add git ignore file
+
+  // Figure out how to delete notes
+  // Change variable names from copy and pasted functions and put those functions in the index.js and import/export as needed
+  // Do I need a routes folder for only 2 routes?
+  // Why when I changes the keys from title and text to noteTitle and noteText does my program now save notes as undefined?
+  // Add readme
+  // Add git ignore file
+
