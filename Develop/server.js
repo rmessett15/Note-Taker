@@ -74,27 +74,30 @@ app.post('/api/notes', (req, res) => {
 
 
 
-const readJson = (content, file) => {
-  fs.readFile(file, "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-    } else {
-      const parsedData = JSON.parse(data);
-      parsedData.push(content);
-    }
-  });
-};
+
+
+
+// const readJson = (content, file) => {
+//   fs.readFile(file, "utf8", (err, data) => {
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       const parsedData = JSON.parse(data);
+//       parsedData.push(content);
+//     }
+//   });
+// };
 
 app.delete('/api/notes/:id', (req, res) => {
   res.send(`Deleted note with ${req.params.id}`);
-  readJson(content, 'db/db.json');
+  // readJson(content, 'db/db.json');
 });
 
 // const jsonData = JSON.parse(data);
 
 app.param('id', (req, res, next, id) => {
   console.log(id)
-  req.jsonData = jsonData[id];
+  // req.jsonData = jsonData[id];
   next()
 })
 
@@ -116,6 +119,11 @@ app.param('id', (req, res, next, id) => {
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
+
+
+
+
+
 
 
 
