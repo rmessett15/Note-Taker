@@ -1,8 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const uniqid = require('uniqid');
 // Helper method for generating unique ids
-
 
 const PORT = 3001;
 
@@ -17,17 +17,67 @@ app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
-app.get("/notes", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/notes.html"))
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
-app.get("/api/notes", function (req, res) {
+app.get('/api/notes', function (req, res) {
   fs.readFile('db/db.json', 'utf8', (err, data) => {
     var jsonData = JSON.parse(data);
      console.log(jsonData);
      res.json(jsonData);
   });
 });
+
+const readAndAppend = (content, file) => {
+  fs.readFile(file, "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      const parsedData = JSON.parse(data);
+      parsedData.push(content);
+      writeToFile(file, parsedData);
+    }
+  });
+};
+
+const writeToFile = (destination, content) =>
+  fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
+    err ? console.error(err) : console.info(`\nData written to ${destination}`)
+  );
+
+app.post('/api/notes', (req, res) => {
+  const { title, text } = req.body;
+  if (title && text) {
+    const newNote = {
+      title: title,
+      text: text,
+      id: uniqid(),
+    };
+
+    readAndAppend(newNote, 'db/db.json');
+    
+    const response = {
+      status: 'success',
+      body: newNote,
+    };
+
+    res.json(response);
+  } else {
+    res.json('Error in posting new note')
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 // GET request for reviews
 app.get('/api/reviews', (req, res) => {
@@ -75,3 +125,4 @@ app.listen(PORT, () =>
   // add to the array json
   // stringify array
   // write file to db.json
+  // Add git ignore file
