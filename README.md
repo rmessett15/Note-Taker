@@ -47,12 +47,12 @@ This application was built as a way to allow freelance web developers to create 
 
 ## Technologies Used
 
-This project is powered by Express.js and JavaScript, uniqid (node package manager), and file system module (node package manager) as dependencies.
+This project is powered by Express.js and JavaScript. It utilizes uniqid (node package manager), and file system module (node package manager) as dependencies.
 
 ## Installation
 
 1. Clone the repo:
-   git clone https://github.com/rmessett15/SVG-Logo-Maker.git
+   git clone https://github.com/rmessett15/Note-Taker.git
 
 2. Open in VS Code. If you do not have VS code you must install it.
 

@@ -224,12 +224,12 @@ app.listen(PORT, () =>
   // Stringify array
   // Write file to db.json
 
-  // Figure out how to delete notes
   // Figure out skipping error within application and why once the skip happens I can no longer delete notes either
   // Change variable names from copy and pasted functions and put those functions in the index.js and import/export as needed
   // Do I need a routes folder for only 2 routes?
   // Why when I changes the keys from title and text to noteTitle and noteText does my program now save notes as undefined?
   // Comment and clean up code base
-  // Add readme
+  // Finish readme (6 areas, and delete the ones I don't need)
   // Add git ignore file
+  // Figure out how to delete notes
 
