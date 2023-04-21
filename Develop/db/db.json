@@ -1,32 +1,22 @@
 [
     {
-        "title": "Test Note 1",
-        "text": "Test Note 1",
-        "id": "6c1jq0lgojkcot"
+        "title": "Scrum meeting",
+        "text": "Discuss necessary workflow changes and issues for the day ahead.",
+        "id": "6c24d3lgr5ctgu"
     },
     {
-        "title": "Test Note 2",
-        "text": "Test Note 2",
-        "id": "6c1jq0lgojkoyd"
+        "title": "Gym",
+        "text": "Meet at 24 hour fitness",
+        "id": "6c24d3lgr5ds75"
     },
     {
-        "title": "Test Note 3",
-        "text": "Test Note 3",
-        "id": "6c1jq0lgojl2kw"
+        "title": "Lunch with Chris",
+        "text": "At 1pm ",
+        "id": "6c24d3lgr5e9fr"
     },
     {
-        "title": "Test Note 4",
-        "text": "Test Note 4",
-        "id": "6c1jq0lgojla8j"
-    },
-    {
-        "title": "Test Note 5",
-        "text": "Test Note 5",
-        "id": "6c1jq0lgojli7b"
-    },
-    {
-        "title": "hello",
-        "text": "world",
-        "id": "6c1olqlgpmmwu9"
+        "title": "Coffee break",
+        "text": "At 2pm ",
+        "id": "6c24gnlgr5fi47"
     }
 ]

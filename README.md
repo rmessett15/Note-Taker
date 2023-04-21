@@ -1,7 +1,5 @@
-# Note Taker Starter Code
-
-# SVG-Logo-Maker
-Week-10 Challenge
+# Note Taker (powered by Express.js)
+Week-11 Challenge
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

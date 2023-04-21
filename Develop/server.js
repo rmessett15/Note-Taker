@@ -29,7 +29,6 @@ app.get('/api/notes', function (req, res) {
   });
 });
 
-
 // Change variable names
 const readAndAppend = (content, file) => {
   fs.readFile(file, "utf8", (err, data) => {
@@ -88,18 +87,64 @@ app.post('/api/notes', (req, res) => {
 //   });
 // };
 
-app.delete('/api/notes/:id', (req, res) => {
+// const data = JSON;
+
+
+app.delete("/api/notes/:id", (req, res) => {
+  let id = req.params.id;
+  let parsedData;
+  fs.readFile("db/db.json", "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      parsedData = JSON.parse(data);
+      const filterData = parsedData.filter((note) => note.id !== id);
+      writeToFile("db/db.json", filterData);
+    }
+  });
   res.send(`Deleted note with ${req.params.id}`);
-  // readJson(content, 'db/db.json');
 });
 
-// const jsonData = JSON.parse(data);
 
-app.param('id', (req, res, next, id) => {
-  console.log(id)
+// app.delete('/api/notes/:id', (req, res) => {
+//   res.send(`Deleted note with ${req.params.id}`);
+// });
+//   // readJson(content, 'db/db.json');
+//   // readAndAppend(JSON, "db/db.json");
+//     fs.readFile('db/db.json', "utf8", (err, data) => {
+//       if (err) {
+//         console.error(err);
+//       } 
+//     })
+      // else {
+      //   const parsedData = JSON.parse(data);
+      //   let newParsedData = parsedData.filter((note) => note.id !== req.params.id)
+      //   console.log(newParsedData);
+        
+        // console.log(parsedData)
+        // for(let i = 0; i < parsedData.length; i++) {
+        //   if(parsedData[i].id === req.params.id) {
+        //     console.log(parsedData[i].id);
+        //     parsedData.splice(i, 1);
+        //     console.log(parsedData);
+        //     writeToFile('db/db.json', parsedData);
+
+        //     // fs.writeFile('db/db.json', newParsedData, (err) => 
+        //     //   err? console.log(err): console.log('success')
+        //     // )
+        //   }
+        // }
+      // });
+    // });
+// });
+
+// const jsonData = JSON.parse();
+
+// app.param('id', (req, res, next, id) => {
+//   console.log(id)
   // req.jsonData = jsonData[id];
-  next()
-})
+//   next()
+// })
 
 // app.delete('/api/notes/:id', (req, res) => {
 //   const deleteNote = req.params.deleteNote || req.query.deleteNote;
@@ -137,53 +182,54 @@ app.listen(PORT, () =>
 
 
 
-// GET request for reviews
-app.get('/api/reviews', (req, res) => {
-  res.status(200).json(reviews);
-});
+// // GET request for reviews
+// app.get('/api/reviews', (req, res) => {
+//   res.status(200).json(reviews);
+// });
 
-// POST request to add a review
-// NOTE: Data persistence isn't set up yet, so this will only exist in memory until we implement it
-app.post('/api/reviews', (req, res) => {
-  // Log that a POST request was received
-  console.info(`${req.method} request received to add a review`);
+// // POST request to add a review
+// // NOTE: Data persistence isn't set up yet, so this will only exist in memory until we implement it
+// app.post('/api/reviews', (req, res) => {
+//   // Log that a POST request was received
+//   console.info(`${req.method} request received to add a review`);
 
-  // Destructuring assignment for the items in req.body
-  const { product, review, username } = req.body;
+//   // Destructuring assignment for the items in req.body
+//   const { product, review, username } = req.body;
 
-  // If all the required properties are present
-  if (product && review && username) {
-    // Variable for the object we will save
-    const newReview = {
-      product,
-      review,
-      username,
-      review_id: uuid(),
-    };
+//   // If all the required properties are present
+//   if (product && review && username) {
+//     // Variable for the object we will save
+//     const newReview = {
+//       product,
+//       review,
+//       username,
+//       review_id: uuid(),
+//     };
 
-    const response = {
-      status: 'success',
-      body: newReview,
-    };
+//     const response = {
+//       status: 'success',
+//       body: newReview,
+//     };
 
-    console.log(response);
-    res.status(201).json(response);
-  } else {
-    res.status(500).json('Error in posting review');
-  }
-});
+//     console.log(response);
+//     res.status(201).json(response);
+//   } else {
+//     res.status(500).json('Error in posting review');
+//   }
+// });
 
   // In server.js
   // Create post route (post/api/notes)
   // Add to the array json
   // Stringify array
   // Write file to db.json
-  // Add git ignore file
 
   // Figure out how to delete notes
+  // Figure out skipping error within application and why once the skip happens I can no longer delete notes either
   // Change variable names from copy and pasted functions and put those functions in the index.js and import/export as needed
   // Do I need a routes folder for only 2 routes?
   // Why when I changes the keys from title and text to noteTitle and noteText does my program now save notes as undefined?
+  // Comment and clean up code base
   // Add readme
   // Add git ignore file
 
