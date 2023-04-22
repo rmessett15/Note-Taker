@@ -233,3 +233,42 @@ app.listen(PORT, () =>
   // Add git ignore file
   // Figure out how to delete notes
 
+
+
+// Chris's Code
+// Route that allows user to post notes and gives unique id 
+app.post('/api/notes', (req, res)=> {
+    console.log(req.body);
+    const newNote = req.body
+    newNote.id = (Math.random() + 1).toString(36).substring(7)
+    fs.readFile('./db/db.json', 'utf-8', (err, data)=> {
+        const notes = JSON.parse(data);
+        notes.push(req.body);
+        fs.writeFile('./db/db.json', JSON.stringify(notes), ()=> {
+            res.send('notes added!')
+        });
+    })
+})
+
+
+// Route built to connect the logic to a delete note 
+// app.delete('/api/notes/:id', (req, res)=> {
+//     fs.readFile('./db/db.json', 'utf-8', (err, data)=> {
+//         const db = JSON.parse(data)
+//         const notes = req.params.id;
+//         console.log(notes)
+//         for(var i=0; i < db.length; i++){
+//             const note = db[i];
+//             if(note.id === notes){
+//                 db.splice(i, 1);
+//                 fs.writeFile(path.join(__dirname, './db/db.json'), JSON.stringify(db), (err)=> {
+//                     if(err){
+//                         console.log(err)
+//                     }
+//                 })
+//                 // res.json("Note Deleted!")
+//             }
+//         }
+//         res.json("id doesn't exist")
+//     })
+// })
