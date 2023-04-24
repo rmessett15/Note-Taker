@@ -35,6 +35,8 @@ This application was built as a way to allow freelance web developers to create 
 
 ## Live Screen Recording of Application Functionality
 
+https://drive.google.com/file/d/1gE34wxOoIaKn4J0mv9qtXtMQ0jdbJ1_k/view
+
 ## Screenshots
 
 ![Screenshot1-week-11-challenge](https://user-images.githubusercontent.com/120127903/233746733-69c7e049-5620-4952-943f-69f6cf0555a1.png)
@@ -72,13 +74,11 @@ Much of this application followed outline code found within the week 11 class ac
 
 ## Features
 
-Features of this application include the users ability to generate logos quickly and easily through the use of SVG files, entirely from the command line. No UI (user interface) needed, and no front end tools needed.  
+Features of this application include the users ability to retrieve and save notes from/to a mock database.json file which will persist on page load unless deleted.  
 
 ## Usage Information
 
-To run this application, use the command line to navigate to the directory of the application, install all dependencies (npm i), then type the command node index.js. You will then be taken through a series of questions. Once all questions have been answered properly, a message will display to the command line telling you your logo has been generated. Find your new logo in the newly generated SVG file.
-
-For unit testing instructions, navigate to the Test Instructions section.
+This application is powered by Express meaning for it to function properly, there needs to be a server running in the background. To start the server, navigate to the directory of the application, install all dependencies (npm i), then type the command npm start (or node index.js). A message should then display in the command line saying "App listening at http://localhost:3001 🚀". Once the server is running, then navigate to the front end of the application directly from the command line by holding command and clicking the link http://localhost:3001. From there, users can pull up any existing notes saved to the database or create new notes, which once saved will be pushed to the database and persisted.
 
 ## Contribution Guidelines
 
