@@ -60,13 +60,15 @@ This project is powered by Express.js and JavaScript. It utilizes uniqid (node p
 
 4. Once node.js v16 is installed, in the terminal, utilize the command npm init -y to initialize and create a package.json where project files will be stored.
 
-5. Next, use the terminal to run the command npm i to install the dependencies associated with this application (developers may need to install inquirer and jest directly from the command line, to do so the command for inquirer will be npm i inquirer@8.2.4 to install v8.2.4 of the inquirer, and npm i jest to install the latest version of jest).
+5. Next, use the terminal to run the command npm i to install the dependencies associated with this application (developers may need to install express and uniqid directly from the command line, to do so the command for express will be npm i express to install the latests version of Express framework globally so that it can be used within the node terminal, and npm i uniqid to install the latest version of uniqid).
 
-6. To run the application, within the terminal, type the command node index.js.
+6. To run the server, within the terminal, type the command npm start or node server.js.
+
+7. Once the server is running, users can then access the front end of the application within the browser to observe full functionality of the site.
 
 ## Credits
 
-Worked with tutor Martin Goldberg to help get me started on this assignment. We pseudo-coded the general outline together and he helped me put together the unit testing portion of this assignment. 
+Much of this application followed outline code found within the week 11 class activities (specifically activity 24). Also worked closely with one of class TA's Jenny Trevizo to handle the delete route functionality. 
 
 ## Features
 
@@ -84,7 +86,7 @@ Open to collaboration, if you choose to do so open an issue and modify any chang
 
 ## Test Instructions
 
-To run unit testing, open the terminal, and use the command npm run test.
+There is currently no unit testing yet written for this application.
 
 ## License
 
