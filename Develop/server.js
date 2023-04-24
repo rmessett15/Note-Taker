@@ -88,3 +88,15 @@ app.delete("/api/notes/:id", (req, res) => {
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
+
+// Figure out skipping error within application and why once the skip happens I can no longer delete notes either
+// Change variable names from copy and pasted functions and put those functions in the index.js and import/export as needed
+// Do I need a routes folder for only 2 routes?
+// Why when I changes the keys from title and text to noteTitle and noteText does my program now save notes as undefined?
+// Comment and clean up code base (format)
+// Finish readme (6 areas, and delete the ones I don't need)
+// Add git ignore file -> why are the things im putting in gitignore not being ignored (not greyed out?)
+// Figure out how to delete notes
+// DEPLOY APP TO HEROKU!!!
+// DEPLOY APP TO LIVE URL!!!
+// Should the package.json be in the root directory of app?
