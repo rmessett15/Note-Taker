@@ -22,13 +22,9 @@ app.get("/notes", (req, res) =>
 );
 
 app.get("/api/notes", function (req, res) {
-  console.log('starting note read');
   fs.readFile("Develop/db/db.json", "utf8", (err, data) => {
-    // console.log(data);
-    // console.log('logging data');
     var jsonData = JSON.parse(data);
-    // console.log(jsonData);
-    console.log('finishing note read');
+    console.log(jsonData);
     res.json(jsonData);
   });
 });
@@ -47,12 +43,10 @@ const readAndAppend = (content, file) => {
 };
 
 // Change variable names
-const writeToFile = (destination, content) => {
-  console.log('starting file write');
+const writeToFile = (destination, content) =>
   fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
-    err ? console.error(err) : console.log(`\nData written to ${destination}`)
+    err ? console.error(err) : console.info(`\nData written to ${destination}`)
   );
-};
 
 app.post("/api/notes", (req, res) => {
   const { title, text } = req.body;
