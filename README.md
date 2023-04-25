@@ -37,6 +37,8 @@ This application was designed to give users a place to store notes to help them 
 
 ## Live URL of Deployed Application
 
+Deployed on Heroku:
+
 https://note-taker-trilogybootcamp.herokuapp.com/
 
 ## Live Screen Recording of Application Functionality
