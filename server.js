@@ -5,26 +5,31 @@ const path = require("path");
 const uniqid = require("uniqid");
 
 const PORT = 3001;
+// const PORT = process.env.PORT || 3001;
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static("public"));
+app.use(express.static("Develop/public"));
 
 app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/index.html"))
+  res.sendFile(path.join(__dirname, "Develop/public/index.html"))
 );
 
 app.get("/notes", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/notes.html"))
+  res.sendFile(path.join(__dirname, "Develop/public/notes.html"))
 );
 
 app.get("/api/notes", function (req, res) {
-  fs.readFile("db/db.json", "utf8", (err, data) => {
+  console.log('starting note read');
+  fs.readFile("Develop/db/db.json", "utf8", (err, data) => {
+    // console.log(data);
+    // console.log('logging data');
     var jsonData = JSON.parse(data);
-    console.log(jsonData);
+    // console.log(jsonData);
+    console.log('finishing note read');
     res.json(jsonData);
   });
 });
@@ -43,10 +48,12 @@ const readAndAppend = (content, file) => {
 };
 
 // Change variable names
-const writeToFile = (destination, content) =>
+const writeToFile = (destination, content) => {
+  console.log('starting file write');
   fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
-    err ? console.error(err) : console.info(`\nData written to ${destination}`)
+    err ? console.error(err) : console.log(`\nData written to ${destination}`)
   );
+};
 
 app.post("/api/notes", (req, res) => {
   const { title, text } = req.body;
@@ -57,7 +64,7 @@ app.post("/api/notes", (req, res) => {
       id: uniqid(),
     };
 
-    readAndAppend(newNote, "db/db.json");
+    readAndAppend(newNote, "Develop/db/db.json");
 
     const response = {
       status: "success",
@@ -73,13 +80,13 @@ app.post("/api/notes", (req, res) => {
 app.delete("/api/notes/:id", (req, res) => {
   let id = req.params.id;
   let parsedData;
-  fs.readFile("db/db.json", "utf8", (err, data) => {
+  fs.readFile("Develop/db/db.json", "utf8", (err, data) => {
     if (err) {
       console.error(err);
     } else {
       parsedData = JSON.parse(data);
       const filterData = parsedData.filter((note) => note.id !== id);
-      writeToFile("db/db.json", filterData);
+      writeToFile("Develop/db/db.json", filterData);
     }
   });
   res.send(`Deleted note with ${req.params.id}`);

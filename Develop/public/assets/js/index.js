@@ -71,7 +71,9 @@ const handleNoteSave = () => {
     title: noteTitle.value,
     text: noteText.value,
   };
+  console.log('save note start');
   saveNote(newNote).then(() => {
+    console.log('save note end');
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -118,6 +120,7 @@ const handleRenderSaveBtn = () => {
 
 // Render the list of note titles
 const renderNoteList = async (notes) => {
+  console.log('get note end');
   let jsonNotes = await notes.json();
   console.log(jsonNotes)
   if (window.location.pathname === '/notes') {
@@ -174,7 +177,9 @@ console.log(noteListItems);
 };
 
 // Gets notes from the db and renders them to the sidebar
-const getAndRenderNotes = () => getNotes().then(renderNoteList);
+const getAndRenderNotes = () => { 
+  console.log('get note start');
+  getNotes().then(renderNoteList)};
 
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
@@ -182,5 +187,6 @@ if (window.location.pathname === '/notes') {
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
   noteText.addEventListener('keyup', handleRenderSaveBtn);
 }
+
 
 getAndRenderNotes();
